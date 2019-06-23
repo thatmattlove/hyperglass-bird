@@ -1,5 +1,7 @@
 # hyperglass-bird
 
+**NOTE:** `hyperglass-bird` is currently tested with BIRD 1.6.3, and is not yet integrated into [hyperglass](https://github.com/checktheroads/hyperglass). BIRD 2.0 integration is currently in progress, after which hyperglass-bird will be integrated with hyperglass.
+
 hyperglass-bird is a restful API for the BIRD routing stack, for use by [hyperglass](https://github.com/checktheroads/hyperglass). hyperglass-bird ingests an HTTP POST request with JSON data and constructs 1 of 5 shell commands to run based on the passed parameters. For example:
 
 ```json
