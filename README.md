@@ -18,7 +18,7 @@ hyperglass-bird is a restful API for the BIRD routing stack, for use by [hypergl
 
 Would construct (by default) `ping -4 -c 5 -I 192.0.2.1 1.1.1.1`, execute the command, and return the output as a string.
 
-For BGP commands, BIRD's `birdc` and `birdc6` are used to get the output. For example:
+For BGP commands in version 1.6, BIRD's `birdc` and `birdc6` are used to get the output. For example:
 
 ```json
 {
