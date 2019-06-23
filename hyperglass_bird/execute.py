@@ -57,8 +57,12 @@ def execute(query):
             to_run = command.is_split()
             output = subprocess.check_output(to_run)
             status = 200
-    except (RuntimeError, subprocess.CalledProcessError) as error_exception:
+    except subprocess.CalledProcessError as ping_error:
+        output = f'Unable to reach {query["target"]}.'
+        status = 504
+        logger.debug(f"{output} Error:\n{ping_error}")
+    except RuntimeError as error_exception:
         output = f"Error running query for {query}"
-        status = 500
+        status = 415
         logger.error(f"Error running query for {query}. Error:\n{error_exception}")
     return (output, status)
