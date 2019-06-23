@@ -1,0 +1,19 @@
+debug = false
+
+[api]
+# listen_addr = "*"
+# port = 8080
+key = "1234"
+
+[commands.1]
+bgp_route = "show route all where {target} ~ net"
+bgp_community = "show route all where {target} ~ bgp_community"
+bgp_aspath = "show route all where bgp_path ~ {target}"
+
+[commands.ipv4]
+ping = "ping -4 -c 5 -I {source} {target}"
+traceroute = "traceroute -4 -w 1 -q 1 -s {source} {target}"
+
+[commands.ipv6]
+ping = "ping -6 -c 5 -I {source} {target}"
+traceroute = "traceroute -6 -w 1 -q 1 -s {source} {target}"
