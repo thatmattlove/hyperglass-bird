@@ -42,20 +42,17 @@ def execute(query):
     status = 500
     try:
         command = configuration.Command(query)
-        if bird_version < 2:
-            if query_type in ["bgp_route"]:
-                to_run = command.birdc_1()
-                logger.debug(f'Running command "{to_run}"')
-                status = 200
-                output = parse(subprocess.check_output(to_run))
-            elif query_type in ["bgp_aspath", "bgp_community"]:
-                to_run = command.birdc_1()
-                logger.debug(f'Running command "{to_run}"')
-                status = 200
+        if query_type in ["bgp_route", "bgp_aspath", "bgp_community"]:
+            to_run = command.birdc()
+            logger.debug(f'Running command "{to_run}"')
+            status = 200
+            if bird_version < 2 and query_type in ["bgp_aspath", "bgp_community"]:
                 output4 = parse(subprocess.check_output(to_run[0]))
                 output6 = parse(subprocess.check_output(to_run[1]))
                 output = output4[0] + "\n" + output6[0]
-        if query_type in ["ping", "traceroute"]:
+            else:
+                output = parse(subprocess.check_output(to_run))
+        elif query_type in ["ping", "traceroute"]:
             logger.debug(f'Running bash command "{command}"')
             to_run = command.is_split()
             output = subprocess.check_output(to_run)

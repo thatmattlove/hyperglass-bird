@@ -122,28 +122,50 @@ class Command:
         logger.debug(f"Constructed bash command as list: {command_split}")
         return command_split
 
-    def birdc_1(self):
+    def birdc(self):
         """Returns bash command as a list of arguments, with the birdc commands as separate list \
         elements"""
-        birdc4_pre = ["birdc", "-r"]
+        _bird_version = bird_version()
+        birdc_pre = ["birdc", "-r"]
         birdc6_pre = ["birdc6", "-r"]
         to_run = None
-        if self.afi == "dual":
+        if _bird_version < 2 and self.afi == "dual":
             fmt_target = getattr(BirdConvert(self.target), self.query_type)()
-            cmd4 = birdc4_pre + [
-                conf["commands"]["1"].get(self.query_type).format(target=fmt_target)
+            cmd4 = birdc_pre + [
+                conf["commands"][self.afi]
+                .get(self.query_type)
+                .format(target=fmt_target)
             ]
             cmd6 = birdc6_pre + [
-                conf["commands"]["1"].get(self.query_type).format(target=fmt_target)
+                conf["commands"][self.afi]
+                .get(self.query_type)
+                .format(target=fmt_target)
             ]
             to_run = (cmd4, cmd6)
-        if self.afi == "ipv4":
-            to_run = birdc4_pre + [
-                conf["commands"]["1"].get(self.query_type).format(target=self.target)
+        elif _bird_version >= 2 and self.afi == "dual":
+            fmt_target = getattr(BirdConvert(self.target), self.query_type)()
+            to_run = birdc_pre + [
+                conf["commands"][self.afi]
+                .get(self.query_type)
+                .format(target=fmt_target)
             ]
-        if self.afi == "ipv6":
+        elif _bird_version < 2 and self.afi == "ipv6":
             to_run = birdc6_pre + [
-                conf["commands"]["1"].get(self.query_type).format(target=self.target)
+                conf["commands"][self.afi]
+                .get(self.query_type)
+                .format(target=self.target)
+            ]
+        elif _bird_version >= 2 and self.afi == "ipv6":
+            to_run = birdc_pre + [
+                conf["commands"][self.afi]
+                .get(self.query_type)
+                .format(target=self.target)
+            ]
+        elif self.afi == "ipv4":
+            to_run = birdc_pre + [
+                conf["commands"][self.afi]
+                .get(self.query_type)
+                .format(target=self.target)
             ]
         logger.debug(f"Constructed Command: {to_run}")
         if not to_run:

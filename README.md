@@ -1,5 +1,7 @@
 # NOTE
-hyperglass-bird is currently tested with BIRD 1.6.3, and is not yet integrated into [hyperglass](https://github.com/checktheroads/hyperglass). BIRD 2.0 integration is currently in progress, after which hyperglass-bird will be integrated with hyperglass.
+hyperglass-bird is not yet integrated into [hyperglass](https://github.com/checktheroads/hyperglass).
+
+hyperglass-bird supports both BIRD versions 1.6 and 2.0.
 
 # hyperglass-bird
 
@@ -42,6 +44,10 @@ Would construct `birdc -r show route all where bgp_path ~ [= * 65000 =]` and `bi
 ## Installation
 
 Currently, hyperglass-bird has only been tested on Ubuntu Server 18.04. A sample systemd service file is included to run hyperglass-bird as a service.
+
+### Note
+
+hyperglass-bird requires that `bird6` and `birdc6` be fully functional, even if IPv6 is not used.
 
 ### Clone the repository
 
