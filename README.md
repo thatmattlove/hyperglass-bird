@@ -1,6 +1,3 @@
-# NOTE
-hyperglass-bird is not yet integrated into [hyperglass](https://github.com/checktheroads/hyperglass).
-
 hyperglass-bird supports both BIRD versions 1.6 and 2.0.
 
 # hyperglass-bird
