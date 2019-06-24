@@ -13,8 +13,8 @@ from passlib.hash import pbkdf2_sha256
 from flask import Flask, request, Response
 
 # Project Imports
-from hyperglass_bird import execute
-from hyperglass_bird import configuration
+import execute
+import configuration
 
 # Logzero Configuration
 if configuration.debug_state():
