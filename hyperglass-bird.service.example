@@ -3,8 +3,6 @@ Description=hyperglass BIRD API
 After=network.target
 
 [Service]
-User=bird
-Group=bird
 WorkingDirectory=/opt/hyperglass-bird
 ExecStart=/usr/bin/python3 /opt/hyperglass-bird/hyperglass_bird/hyperglass_bird.py
 
