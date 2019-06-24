@@ -2,7 +2,7 @@ hyperglass-bird supports both BIRD versions 1.6 and 2.0.
 
 # hyperglass-bird
 
-hyperglass-bird is a restful API for the BIRD routing stack, for use by [hyperglass](https://github.com/checktheroads/hyperglass). hyperglass-bird ingests an HTTP POST request with JSON data and constructs 1 of 5 shell commands to run based on the passed parameters. For example:
+hyperglass-bird is a restful API for the [BIRD Internet Routing Daemon](https://bird.network.cz/), for use by [hyperglass](https://github.com/checktheroads/hyperglass). hyperglass-bird ingests an HTTP POST request with JSON data and constructs 1 of 5 shell commands to run based on the passed parameters. For example:
 
 ```json
 {
@@ -44,7 +44,7 @@ Currently, hyperglass-bird has only been tested on Ubuntu Server 18.04. A sample
 
 ### Note
 
-hyperglass-bird requires that `bird6` and `birdc6` be fully functional, even if IPv6 is not used.
+If using BIRD 1.6, hyperglass-bird requires that `bird6` and `birdc6` be fully functional, even if IPv6 is not used. 
 
 ### Clone the repository
 
