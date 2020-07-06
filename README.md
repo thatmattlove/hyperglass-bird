@@ -1,6 +1,11 @@
-hyperglass-bird supports both BIRD versions 1.6 and 2.0.
+# This repository is no longer maintained
+
+hyperglass-bird was originally created for [hyperglass v0](https://github.com/checktheroads/hyperglass/tree/v0), which is being migrated to [hyperglass v1.0](https://github.com/checktheroads/hyperglass). If you're using BIRD with hyperglass v1.0, please use [**hyperglass-agent**](https://github.com/checktheroads/hyperglass-agent).
+
 
 # hyperglass-bird
+
+hyperglass-bird supports both BIRD versions 1.6 and 2.0.
 
 hyperglass-bird is a restful API for the [BIRD Internet Routing Daemon](https://bird.network.cz/), for use by [hyperglass](https://github.com/checktheroads/hyperglass). hyperglass-bird ingests an HTTP POST request with JSON data and constructs 1 of 5 shell commands to run based on the passed parameters. For example:
 
